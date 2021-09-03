@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Player")]
+    public GameObject playerPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Enemies")]
+    public List<GameObject> enemies;
+
+    //[Header("References")]//
+
 }
