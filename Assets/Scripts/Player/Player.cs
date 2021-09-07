@@ -70,11 +70,7 @@ public class Player : MonoBehaviour
     {
         myRigidbody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(Ease);
         myRigidbody.transform.DOScaleY(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(Ease);
-      
     }
-    private void HandleScaleLanding()
-    {
-        
-    }
-
+   
+    
 }
