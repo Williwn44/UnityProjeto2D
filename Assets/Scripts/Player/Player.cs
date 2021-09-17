@@ -20,6 +20,13 @@ public class Player : MonoBehaviour
     private float _currentSpeed;
     public Ease Ease = Ease.OutBack;
 
+    [Header("Animation Player")]
+
+    public string boolRun = "Run";
+    public Animator animator;
+    public float scaleChangeDuration = .1f;
+
+
     private void Update()
     {
         HandleJump();
@@ -37,10 +44,24 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             myRigidbody.velocity = new Vector2(-_currentSpeed, myRigidbody.velocity.y);
+            if(myRigidbody.transform.localScale.x != -1)
+            {
+                myRigidbody.transform.DOScaleX(-1, scaleChangeDuration);
+            }
+            animator.SetBool(boolRun, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigidbody.velocity = new Vector2(_currentSpeed, myRigidbody.velocity.y);
+            if(myRigidbody.transform.localScale.x != 1)
+            {
+                myRigidbody.transform.DOScaleX(1, scaleChangeDuration);
+            }
+            animator.SetBool(boolRun, true);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
         }
 
         if (myRigidbody.velocity.x > 0)
@@ -58,12 +79,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRigidbody.velocity = Vector2.up * forcJump;
-            myRigidbody.transform.localScale = Vector2.one;
-
+            myRigidbody.transform.localScale = Vector2.one;          
             DOTween.Kill(myRigidbody.transform);
 
-            HandleScaleJump();
+            //HandleScaleJump();
         }
+        
         
     }
     private void HandleScaleJump()
